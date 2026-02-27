@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SVC Beauty Love 💄</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --pink-light: #fde8f0;
+      --pink-mid: #f9c6d8;
+      --pink-deep: #e8749a;
+      --pink-hot: #d4517a;
+      --lilac: #e8d5f0;
+      --gold: #d4a94a;
+      --cream: #fff7f0;
+      --white: #ffffff;
+      --text-dark: #4a2040;
+      --text-mid: #8a4a6e;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Quicksand', sans-serif;
+      background: var(--cream);
+      color: var(--text-dark);
+      overflow-x: hidden;
+    }
+
+    /* ── SPARKLES BACKGROUND ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(circle at 15% 20%, rgba(253,232,240,.6) 0%, transparent 40%),
+        radial-gradient(circle at 85% 80%, rgba(232,213,240,.5) 0%, transparent 40%),
+        radial-gradient(circle at 50% 50%, rgba(249,198,216,.2) 0%, transparent 60%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,.88);
+      backdrop-filter: blur(14px);
+      border-bottom: 1.5px solid var(--pink-mid);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.8rem 2rem;
+      box-shadow: 0 2px 18px rgba(212,81,122,.12);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.35rem;
+      color: var(--pink-hot);
+      font-weight: 700;
+      letter-spacing: .02em;
+    }
+
+    .nav-logo span { font-size: 1.6rem; }
+
+    .nav-links {
+      display: flex;
+      gap: 1.8rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-mid);
+      font-weight: 600;
+      font-size: .92rem;
+      letter-spacing: .03em;
+      transition: color .2s;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -3px; left: 0;
+      width: 0; height: 2px;
+      background: var(--pink-deep);
+      border-radius: 2px;
+      transition: width .25s;
+    }
+
+    .nav-links a:hover { color: var(--pink-hot); }
+    .nav-links a:hover::after { width: 100%; }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      min-height: 88vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      padding: 4rem 2rem;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, #fde8f0 0%, #f9c6d8 35%, #e8d5f0 70%, #fde8f0 100%);
+      z-index: 0;
+    }
+
+    /* floating blobs */
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(60px);
+      opacity: .45;
+      animation: float 8s ease-in-out infinite;
+    }
+    .blob-1 { width:340px;height:340px; background:#f9c6d8; top:-80px; left:-100px; animation-delay:0s; }
+    .blob-2 { width:260px;height:260px; background:#e8d5f0; bottom:-60px; right:-60px; animation-delay:3s; }
+    .blob-3 { width:180px;height:180px; background:#fde8f0; top:40%; left:60%; animation-delay:1.5s; }
+
+    @keyframes float {
+      0%,100% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(-24px) scale(1.04); }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      max-width: 700px;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: rgba(255,255,255,.7);
+      border: 1.5px solid var(--pink-mid);
+      color: var(--pink-hot);
+      font-size: .8rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      padding: .35rem 1.1rem;
+      border-radius: 50px;
+      margin-bottom: 1.4rem;
+      backdrop-filter: blur(8px);
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.8rem, 7vw, 5rem);
+      line-height: 1.12;
+      color: var(--text-dark);
+      margin-bottom: .6rem;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--pink-hot);
+    }
+
+    .hero-sub {
+      font-size: 1.1rem;
+      color: var(--text-mid);
+      margin-bottom: 2rem;
+      font-weight: 500;
+      line-height: 1.6;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--pink-deep), var(--pink-hot));
+      color: #fff;
+      font-family: 'Quicksand', sans-serif;
+      font-weight: 700;
+      font-size: .95rem;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      padding: .85rem 2.2rem;
+      border-radius: 50px;
+      text-decoration: none;
+      box-shadow: 0 8px 30px rgba(212,81,122,.35);
+      transition: transform .2s, box-shadow .2s;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 14px 40px rgba(212,81,122,.45);
+    }
+
+    .btn-secondary {
+      display: inline-block;
+      background: rgba(255,255,255,.7);
+      color: var(--pink-hot);
+      border: 2px solid var(--pink-deep);
+      font-family: 'Quicksand', sans-serif;
+      font-weight: 700;
+      font-size: .95rem;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      padding: .85rem 2.2rem;
+      border-radius: 50px;
+      text-decoration: none;
+      margin-left: 1rem;
+      backdrop-filter: blur(8px);
+      transition: all .2s;
+    }
+
+    .btn-secondary:hover {
+      background: var(--pink-light);
+      transform: translateY(-3px);
+    }
+
+    /* ── SECTION WRAPPER ── */
+    section {
+      position: relative;
+      z-index: 1;
+      padding: 5rem 2rem;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      color: var(--text-dark);
+      text-align: center;
+      margin-bottom: .5rem;
+    }
+
+    .section-title em {
+      color: var(--pink-hot);
+      font-style: italic;
+    }
+
+    .section-sub {
+      text-align: center;
+      color: var(--text-mid);
+      font-size: 1rem;
+      margin-bottom: 3rem;
+      font-weight: 500;
+    }
+
+    .divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: .7rem;
+      margin-bottom: 3rem;
+    }
+
+    .divider::before, .divider::after {
+      content: '';
+      flex: 1;
+      max-width: 80px;
+      height: 1.5px;
+      background: linear-gradient(to right, transparent, var(--pink-mid));
+    }
+
+    .divider::after { background: linear-gradient(to left, transparent, var(--pink-mid)); }
+    .divider span { color: var(--pink-deep); font-size: 1.2rem; }
+
+    /* ── FEATURED BANNER ── */
+    .featured {
+      background: linear-gradient(135deg, #fff0f5 0%, #fde8f0 50%, #e8d5f0 100%);
+      border-radius: 24px;
+      max-width: 1100px;
+      margin: 0 auto 4rem;
+      padding: 3rem 2.5rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      align-items: center;
+      box-shadow: 0 8px 40px rgba(212,81,122,.1);
+    }
+
+    .featured-text h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      color: var(--text-dark);
+      margin-bottom: .8rem;
+      line-height: 1.2;
+    }
+
+    .featured-text p {
+      color: var(--text-mid);
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+    }
+
+    .featured-img {
+      display: flex;
+      justify-content: center;
+    }
+
+    .featured-img img {
+      width: 100%;
+      max-width: 380px;
+      border-radius: 18px;
+      box-shadow: 0 12px 40px rgba(212,81,122,.2);
+      transition: transform .3s;
+    }
+
+    .featured-img img:hover { transform: scale(1.03) rotate(-1deg); }
+
+    /* ── PRODUCTS GRID ── */
+    .products-section { background: var(--white); }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.8rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .product-card {
+      background: var(--white);
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1.5px solid var(--pink-mid);
+      box-shadow: 0 4px 20px rgba(212,81,122,.08);
+      transition: transform .25s, box-shadow .25s;
+      cursor: pointer;
+    }
+
+    .product-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 14px 40px rgba(212,81,122,.2);
+    }
+
+    .product-img-wrap {
+      background: var(--pink-light);
+      padding: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 220px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .product-img-wrap::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 70% 30%, rgba(255,255,255,.5), transparent 60%);
+    }
+
+    .product-img-wrap img {
+      width: 100%;
+      max-height: 190px;
+      object-fit: contain;
+      position: relative;
+      z-index: 1;
+      transition: transform .3s;
+    }
+
+    .product-card:hover .product-img-wrap img {
+      transform: scale(1.06);
+    }
+
+    .badge-new {
+      position: absolute;
+      top: 12px; right: 12px;
+      background: linear-gradient(135deg, var(--pink-deep), var(--pink-hot));
+      color: #fff;
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: .28rem .7rem;
+      border-radius: 50px;
+      z-index: 2;
+    }
+
+    .product-info {
+      padding: 1.2rem 1.4rem 1.4rem;
+    }
+
+    .product-category {
+      font-size: .73rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--pink-deep);
+      margin-bottom: .3rem;
+    }
+
+    .product-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      color: var(--text-dark);
+      margin-bottom: .4rem;
+      font-weight: 700;
+    }
+
+    .product-desc {
+      font-size: .85rem;
+      color: var(--text-mid);
+      line-height: 1.5;
+      margin-bottom: 1rem;
+    }
+
+    .product-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .product-price {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      color: var(--pink-hot);
+      font-weight: 700;
+    }
+
+    .btn-cart {
+      background: linear-gradient(135deg, var(--pink-deep), var(--pink-hot));
+      color: #fff;
+      border: none;
+      padding: .5rem 1.1rem;
+      border-radius: 50px;
+      font-family: 'Quicksand', sans-serif;
+      font-weight: 700;
+      font-size: .82rem;
+      cursor: pointer;
+      transition: transform .18s, box-shadow .18s;
+      box-shadow: 0 4px 14px rgba(212,81,122,.3);
+    }
+
+    .btn-cart:hover {
+      transform: scale(1.06);
+      box-shadow: 0 6px 20px rgba(212,81,122,.4);
+    }
+
+    /* ── CATEGORIES STRIP ── */
+    .categories {
+      background: linear-gradient(135deg, var(--pink-light) 0%, var(--lilac) 100%);
+    }
+
+    .cat-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .cat-pill {
+      background: rgba(255,255,255,.7);
+      border: 1.5px solid var(--pink-mid);
+      border-radius: 50px;
+      padding: .65rem 1.5rem;
+      font-weight: 700;
+      font-size: .9rem;
+      color: var(--text-dark);
+      cursor: pointer;
+      transition: all .2s;
+      backdrop-filter: blur(8px);
+      display: flex;
+      align-items: center;
+      gap: .4rem;
+    }
+
+    .cat-pill:hover {
+      background: var(--pink-hot);
+      color: #fff;
+      border-color: var(--pink-hot);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(212,81,122,.3);
+    }
+
+    /* ── WHY US ── */
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1.5rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .why-card {
+      background: var(--white);
+      border-radius: 18px;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      border: 1.5px solid var(--pink-mid);
+      box-shadow: 0 4px 16px rgba(212,81,122,.07);
+      transition: transform .2s;
+    }
+
+    .why-card:hover { transform: translateY(-4px); }
+
+    .why-icon {
+      font-size: 2.4rem;
+      margin-bottom: .8rem;
+      display: block;
+    }
+
+    .why-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      color: var(--text-dark);
+      margin-bottom: .4rem;
+    }
+
+    .why-card p {
+      font-size: .85rem;
+      color: var(--text-mid);
+      line-height: 1.5;
+    }
+
+    /* ── NEWSLETTER ── */
+    .newsletter {
+      background: linear-gradient(135deg, var(--pink-hot) 0%, #c43a6a 100%);
+      text-align: center;
+      padding: 4rem 2rem;
+    }
+
+    .newsletter h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      color: #fff;
+      margin-bottom: .5rem;
+    }
+
+    .newsletter p {
+      color: rgba(255,255,255,.85);
+      margin-bottom: 1.8rem;
+      font-size: 1rem;
+    }
+
+    .nl-form {
+      display: flex;
+      gap: .7rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .nl-form input {
+      padding: .8rem 1.4rem;
+      border-radius: 50px;
+      border: none;
+      font-family: 'Quicksand', sans-serif;
+      font-size: .95rem;
+      width: 280px;
+      outline: none;
+      box-shadow: 0 4px 16px rgba(0,0,0,.15);
+    }
+
+    .nl-form button {
+      background: #fff;
+      color: var(--pink-hot);
+      border: none;
+      padding: .8rem 1.8rem;
+      border-radius: 50px;
+      font-family: 'Quicksand', sans-serif;
+      font-weight: 700;
+      font-size: .95rem;
+      cursor: pointer;
+      transition: transform .2s;
+      box-shadow: 0 4px 16px rgba(0,0,0,.15);
+    }
+
+    .nl-form button:hover { transform: scale(1.04); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--text-dark);
+      color: rgba(255,255,255,.75);
+      text-align: center;
+      padding: 2.5rem 2rem;
+      font-size: .88rem;
+    }
+
+    footer .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      color: var(--pink-mid);
+      margin-bottom: .5rem;
+      font-style: italic;
+    }
+
+    footer .social-row {
+      display: flex;
+      justify-content: center;
+      gap: 1.4rem;
+      margin: .8rem 0;
+      font-size: 1.4rem;
+    }
+
+    footer .social-row a {
+      text-decoration: none;
+      transition: transform .2s;
+      display: inline-block;
+    }
+
+    footer .social-row a:hover { transform: scale(1.2); }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity:0; transform:translateY(30px); }
+      to   { opacity:1; transform:translateY(0); }
+    }
+
+    .hero-content > * {
+      animation: fadeUp .7s ease forwards;
+      opacity: 0;
+    }
+
+    .hero-badge { animation-delay: .1s; }
+    .hero h1   { animation-delay: .25s; }
+    .hero-sub  { animation-delay: .4s; }
+    .hero .btn-row { animation-delay: .55s; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .featured { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+      .btn-secondary { margin-left: 0; margin-top: .7rem; }
+      .hero .btn-row { display: flex; flex-direction: column; align-items: center; gap: .7rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-logo">
+      <span>💄</span> SVC Beauty Love
+    </div>
+    <ul class="nav-links">
+      <li><a href="#productos">Productos</a></li>
+      <li><a href="#categorias">Categorías</a></li>
+      <li><a href="#nosotras">Nosotras</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" style="padding:0;">
+    <div class="hero-bg">
+      <div class="blob blob-1"></div>
+      <div class="blob blob-2"></div>
+      <div class="blob blob-3"></div>
+    </div>
+    <div class="hero-content" style="padding:2rem;">
+      <div class="hero-badge">✨ Nueva colección disponible</div>
+      <h1>Tu belleza,<br><em>nuestro amor</em></h1>
+      <p class="hero-sub">Cosméticos de calidad que realzan tu esencia natural.<br>Descubre nuestra colección de productos premium.</p>
+      <div class="btn-row">
+        <a href="#productos" class="btn-primary">Ver Productos 🛍️</a>
+        <a href="#categorias" class="btn-secondary">Explorar Categorías</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CATEGORÍAS -->
+  <section class="categories" id="categorias">
+    <h2 class="section-title">Nuestras <em>Categorías</em></h2>
+    <p class="section-sub">Todo lo que necesitas para lucir increíble</p>
+    <div class="divider"><span>✿</span></div>
+    <div class="cat-grid">
+      <div class="cat-pill">💎 Polvo Traslúcido</div>
+      <div class="cat-pill">💋 Labiales</div>
+      <div class="cat-pill">🌸 Blush</div>
+      <div class="cat-pill">☀️ Bronzer</div>
+      <div class="cat-pill">✨ Iluminador</div>
+      <div class="cat-pill">🎨 Paletas</div>
+      <div class="cat-pill">💄 Lip Gloss</div>
+    </div>
+  </section>
+
+  <!-- PRODUCTOS -->
+  <section class="products-section" id="productos" style="padding:5rem 2rem;">
+    <h2 class="section-title">Nuestros <em>Productos</em></h2>
+    <p class="section-sub">Selección cuidada para realzar tu belleza</p>
+    <div class="divider"><span>✿</span></div>
+
+    <div class="products-grid">
+
+      <!-- Polvo Traslúcido 1 -->
+      <div class="product-card">
+        <div class="product-img-wrap">
+          <span class="badge-new">Nuevo</span>
+          <img src="IMG_0092.jpeg" alt="Polvo Traslúcido Translucent"/>
+        </div>
+        <div class="product-info">
+          <div class="product-category">Polvo Traslúcido</div>
+          <div class="product-name">Polvo Fijador Corazón</div>
+          <p class="product-desc">Fija el maquillaje con un acabado natural y suave. Disponible en 3 tonos.</p>
+          <div class="product-footer">
+            <span class="product-price">Consultar</span>
+            <button class="btn-cart">Pedir 🛒</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Polvo Blush Rosa -->
+      <div class="product-card">
+        <div class="product-img-wrap">
+          <img src="IMG_0086.jpeg" alt="Polvo Rosa Blush"/>
+        </div>
+        <div class="product-info">
+          <div class="product-category">Polvo / Blush</div>
+          <div class="product-name">Polvo Corazón Rosa</div>
+          <p class="product-desc">Delicado polvo blush con acabado luminoso. Empaque corazón irresistible.</p>
+          <div class="product-footer">
+            <span class="product-price">Consultar</span>
+            <button class="btn-cart">Pedir 🛒</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Lip Gloss -->
+      <div class="product-card">
+        <div class="product-img-wrap">
+          <span class="badge-new">🔥 Hot</span>
+          <img src="IMG_0093.jpeg" alt="3-Colors Lip Gloss"/>
+        </div>
+        <div class="product-info">
+          <div class="product-category">Labiales / Lip Gloss</div>
+          <div class="product-name">Lip Gloss 3 Colores</div>
+          <p class="product-desc">Set de 3 lip gloss. Hidratantes y brillantes. Variedad de tonos rosa y coral.</p>
+          <div class="product-footer">
+            <span class="product-price">Consultar</span>
+            <button class="btn-cart">Pedir 🛒</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Paleta MUBA -->
+      <div class="product-card">
+        <div class="product-img-wrap">
+          <img src="IMG_0071.jpeg" alt="Paleta Muba Colores"/>
+        </div>
+        <div class="product-info">
+          <div class="product-category">Paletas</div>
+          <div class="product-name">Paleta MUBA Viva La Muba</div>
+          <p class="product-desc">12 colores intensos para looks artísticos y creativos. Ideales para fiestas y eventos.</p>
+          <div class="product-footer">
+            <span class="product-price">Consultar</span>
+            <button class="btn-cart">Pedir 🛒</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Iluminador Kevin&Coco -->
+      <div class="product-card">
+        <div class="product-img-wrap">
+          <span class="badge-new">✨ Fav</span>
+          <img src="IMG_0066.jpeg" alt="Iluminador Kevin Coco"/>
+        </div>
+        <div class="product-info">
+          <div class="product-category">Iluminador / Highlight</div>
+          <div class="product-name">Highlight Kevin&Coco</div>
+          <p class="product-desc">Iluminador en empaque corazón con espejo integrado. 3 tonos disponibles.</p>
+          <div class="product-footer">
+            <span class="product-price">Consultar</span>
+            <button class="btn-cart">Pedir 🛒</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Blush Maybelline -->
+      <div class="product-card">
+        <div class="product-img-wrap">
+          <img src="IMG_0073.jpeg" alt="Blush Maybelline"/>
+        </div>
+        <div class="product-info">
+          <div class="product-category">Blush / Bronzer</div>
+          <div class="product-name">Matte Blush Maybelline</div>
+          <p class="product-desc">Blush líquido en tonos coral, rosa y nude. Larga duración y acabado sedoso.</p>
+          <div class="product-footer">
+            <span class="product-price">Consultar</span>
+            <button class="btn-cart">Pedir 🛒</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- POR QUÉ ELEGIRNOS -->
+  <section id="nosotras" style="background:linear-gradient(135deg,#fff0f5,#f9c6d840,#e8d5f0);">
+    <h2 class="section-title">¿Por qué <em>elegirnos?</em></h2>
+    <p class="section-sub">Tu belleza merece lo mejor</p>
+    <div class="divider"><span>✿</span></div>
+    <div class="why-grid">
+      <div class="why-card">
+        <span class="why-icon">💖</span>
+        <h3>Productos Selectos</h3>
+        <p>Escogemos cada producto con amor para garantizar la mejor calidad.</p>
+      </div>
+      <div class="why-card">
+        <span class="why-icon">✨</span>
+        <h3>Tendencias Actuales</h3>
+        <p>Siempre al día con los productos más populares del mundo beauty.</p>
+      </div>
+      <div class="why-card">
+        <span class="why-icon">🚀</span>
+        <h3>Envío Rápido</h3>
+        <p>Recibe tus productos favoritos de manera rápida y segura.</p>
+      </div>
+      <div class="why-card">
+        <span class="why-icon">💬</span>
+        <h3>Atención Personalizada</h3>
+        <p>Te asesoramos para encontrar el producto ideal para ti.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER / CONTACTO -->
+  <section class="newsletter" id="contacto">
+    <h2>¡Únete a la familia <em style="color:#fde8f0;">Beauty Love</em>!</h2>
+    <p>Síguenos en redes sociales para ver los últimos lanzamientos y promociones 💄</p>
+    <div class="nl-form">
+      <input type="email" placeholder="Tu correo electrónico ✉️" />
+      <button type="button">¡Suscribirme!</button>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">SVC Beauty Love 💋</div>
+    <div class="social-row">
+      <a href="#" title="Instagram">📸</a>
+      <a href="#" title="TikTok">🎵</a>
+      <a href="#" title="WhatsApp">💬</a>
+      <a href="#" title="Facebook">👍</a>
+    </div>
+    <p>© 2025 SVC Beauty Love · Hecho con 💖 para ti</p>
+  </footer>
+
+</body>
+</html>
